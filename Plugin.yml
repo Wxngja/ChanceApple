@@ -1,0 +1,5 @@
+name: RaeGappleKill
+api: [1.14.0]
+version: "1.0"
+main: RareGappleKill\Main
+author: BoyIsDino
