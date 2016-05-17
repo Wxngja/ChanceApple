@@ -17,9 +17,10 @@ $killer = $player->getLastDamageCause();
 $rand = mt_rand(1, 100);
 
 If($rand => 25){
+If($killer instanceof Player){
 $killer->getInventory()->addItem(Item::get(ITEM::GOLDEN_APPLE,0,1));
 $killer->sendMessage(TF::GREEN . "[RGK] You have got a rare golden apple for killing " . $entity . " ! ");
+           }
        }
     }
 }
-
