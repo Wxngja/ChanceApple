@@ -1,3 +1,5 @@
+<?php
+
 namespace RareGappleKill;
 
 use pocketmine\event\Listener;
