@@ -15,7 +15,7 @@ class Main extends PluginBase implements Listener
   public function onEnable()
   {
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
-    $this->getLogger()->info(TF::GREEN . "RareGappleKill v1.0.0 Enabled!");
+    $this->getLogger()->info(TF::GREEN . "Chance of Apple Enabled!");
   }
 
   public function onDeath(PlayerDeathEvent $event)
@@ -25,10 +25,10 @@ class Main extends PluginBase implements Listener
     if($cause instanceof EntityDamageByEntityEvent) {
       $killer = $cause->getDamager();
       if($killer instanceof Player) {
-        $rand = mt_rand(1, 4);
-        if($rand === 1) {
-          $killer->getInventory()->addItem(Item::get(Item::GOLDEN_APPLE));
-          $killer->sendMessage(TF::GREEN . "[RGK] You have received a rare golden apple for killing " . $entity->getDisplayName() . " ! ");
+        $rand = mt_rand(1, 100);
+        if($rand === 25) {
+          $killer->getInventory()->addItem(Item::get(Item::ENCHANTED_GOLDEN_APPLE));
+          $killer->sendTip(TF::RED . "[CHANCE] Apple Dropped, 25% of it. Player Killed: " . $entity->getDisplayName() . " ! ");
         }
       }
     }
