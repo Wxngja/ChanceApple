@@ -8,6 +8,9 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\item\Item;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;
+use pocketmine\level\sound\FizzSound;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\enitity\Effect;
 
 class Main extends PluginBase implements Listener
 {
@@ -29,6 +32,12 @@ class Main extends PluginBase implements Listener
         if($rand === 25) {
           $killer->getInventory()->addItem(Item::get(Item::ENCHANTED_GOLDEN_APPLE));
           $killer->sendTip(TF::RED . "[CHANCE] Apple Dropped, 25% of it. Player Killed: " . $entity->getDisplayName() . " ! ");
+          $killer->addEffect(Effect::getEffect(Effect::STRENGTH)->setAmplifier(1)->setDuration(100)->setVisible(true));
+				}
+				
+				if(!$event->isCancelled()) {
+					$level = $killer->getLevel();
+					$level->addSound(new FizzSound($killer->getLocation()));
         }
       }
     }
